@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{EB1C5A24-7993-446D-050D-BEB3E081CD11}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Oculus/VR/Scripts/OVRHeadsetEmulator.cs">
+    <Files>
+      <File FileName="Assets/Oculus/VR/Scripts/Util/OVRDebugInfo.cs" Line="114" Column="94" />
+      <File FileName="Assets/Oculus/VR/Scripts/OVRHeadsetEmulator.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6182ad12-7db5-42de-82bd-906a21a08c16" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

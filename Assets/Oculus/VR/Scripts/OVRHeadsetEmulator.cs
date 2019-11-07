@@ -154,7 +154,7 @@ public class OVRHeadsetEmulator : MonoBehaviour {
 				return true;
 		}
 
-		return false;
+		return true;
 	}
 
 	bool IsTweakingPitch()
