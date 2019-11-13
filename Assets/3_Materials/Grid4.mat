@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grid2
+  m_Name: Grid4
   m_Shader: {fileID: -6465566751694194690, guid: 098ff266f4d2d42be9a80dbcebf67b05,
     type: 3}
   m_ShaderKeywords: 
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_23F0167F: 0.95
+    - Vector1_23F0167F: 0.995
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -86,9 +86,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_99D6363C: {r: 1, g: 0.98619616, b: 0.3160377, a: 0}
-    - Color_9CD9A78: {r: 0, g: 0.42408374, b: 1.3350784, a: 0}
+    - Color_9CD9A78: {r: 1.7824345, g: 1.7824345, b: 1.7824345, a: 0}
     - Color_CBEC516: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_7B6D46D4: {r: 10, g: 10, b: 0, a: 0}
+    - Vector2_7B6D46D4: {r: 7, g: 7, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
