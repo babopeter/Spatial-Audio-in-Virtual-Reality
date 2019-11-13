@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/6_Scenes/ANDERS.unity
+    path: Assets/6_Scenes/Main.unity
     guid: f546b439a4f564413baeb1be6e999542
   m_configObjects: {}
