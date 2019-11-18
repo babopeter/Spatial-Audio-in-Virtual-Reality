@@ -19,13 +19,22 @@ public class Raycaster : MonoBehaviour
   private float targetMoveDist = 0;
   private Vector3 endPos;
   private bool lVib, rVib;
+    
+    public Material material;
+    MeshRenderer meshRenderer;
+    public float fresnelPower;
+
+
+
   //public GameObject hitObject;
 
     // Start is called before the first frame update
     void Start()
     {
-      line = gameObject.GetComponent<LineRenderer>();
-      layermask = 1 << 8;
+        line = gameObject.GetComponent<LineRenderer>();
+        layermask = 1 << 8;
+        GameObject track = GameObject.FindWithTag("Track");
+        meshRenderer = track.GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -76,30 +85,33 @@ public class Raycaster : MonoBehaviour
         }
       }
 
-
+    
     void HandleInput(Controller controller, RaycastHit hit) {
+      // LEFT HAND
       if(this.controller == Controller.Left) {
         if(OVRInput.Get(OVRInput.RawButton.LIndexTrigger) && !pickUp) {
           pickUp = true;
-          hit.transform.gameObject.GetComponent<Renderer>().material = matHit;
-          if(hit.transform.gameObject.tag == "Track")
+          meshRenderer.material.SetFloat("_FresnelPower", fresnelPower = 2);
+          //hit.transform.gameObject.GetComponent<Renderer>().material = matHit;
+      if (hit.transform.gameObject.tag == "Track")
           hit.transform.gameObject.name = "Grabbed Track";
           hit.transform.parent = gameObject.transform;
         } else if(!OVRInput.Get(OVRInput.RawButton.LIndexTrigger)) {
           foreach(Transform child in transform) {
             if(child.tag == "Track") {
               child.transform.parent = null;
-              child.GetComponent<Renderer>().material = matNotHit;
+              //child.GetComponent<Renderer>().material = matNotHit;
+              meshRenderer.material.SetFloat("_FresnelPower", fresnelPower = 10);
             }
           }
           pickUp = false;
         }
     }
-
+    // RIGHT HAND
     if (this.controller == Controller.Right) {
       if(OVRInput.Get(OVRInput.RawButton.RIndexTrigger) && !pickUp) {
         pickUp = true;
-        hit.transform.gameObject.GetComponent<Renderer>().material = matHit;
+        //hit.transform.gameObject.GetComponent<Renderer>().material = matHit;
         if(hit.transform.gameObject.tag == "Track")
         hit.transform.gameObject.name = "Grabbed Track";
         hit.transform.parent = gameObject.transform;
@@ -114,7 +126,7 @@ public class Raycaster : MonoBehaviour
     foreach(Transform child in transform) {
       if(child.tag == "Track") {
         child.transform.parent = null;
-        child.GetComponent<Renderer>().material = matNotHit;
+        //child.GetComponent<Renderer>().material = matNotHit;
       }
     }
   }
@@ -133,6 +145,7 @@ public class Raycaster : MonoBehaviour
     }
   }
 
+  // FIX ISSUE WITH CONSTANT VIBRATION UPON FRAME-DROPS
   IEnumerator Vibrate(Controller controller, float seconds) {
     if(this.controller == Controller.Left /*&& !lVib*/) {
       lVib = true;
