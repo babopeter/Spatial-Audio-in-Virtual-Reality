@@ -20,6 +20,8 @@ public class Raycaster : MonoBehaviour
     private Vector3 endPos;
     private bool lVib, rVib;
 
+    private MeshRenderer lastHitRenderer;
+
     // Variables for accesing fresnel
     public Material material;
     MeshRenderer meshRenderer;
@@ -39,14 +41,13 @@ public class Raycaster : MonoBehaviour
     {
         line = gameObject.GetComponent<LineRenderer>();
         layermask = 1 << 8;
-        GameObject track = GameObject.FindWithTag("Track");
-        meshRenderer = track.GetComponent<MeshRenderer>();
+        //GameObject track = GameObject.FindWithTag("Track");
+        //meshRenderer = track.GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        meshRenderer.material.SetFloat("_FresnelIntensity", fresnelIntensity = fresnelIntensityMin);
         Vector3 forward = transform.TransformDirection(Vector3.forward) * 25;
         endPos = transform.position + forward;
 
@@ -56,7 +57,12 @@ public class Raycaster : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, forward, out hit, Mathf.Infinity, layermask)) {
             StartCoroutine(Vibrate(controller, 0.05f));
-            FresnelHighlight(controller, hit);
+            if (hit.transform.gameObject.GetComponent<MeshRenderer>() != null)
+            {
+                meshRenderer = GetMeshRenderer(hit);
+                meshRenderer.material.SetFloat("_FresnelIntensity", fresnelIntensity = fresnelIntensityMax);
+            }
+            //FresnelHighlight(controller, hit);
             //line.material = matHit;
             if (hit.transform.gameObject != null) {
                 HandleInput(controller, hit);
@@ -78,6 +84,10 @@ public class Raycaster : MonoBehaviour
               rVib = false;
             }
             */
+            //meshRenderer.material.SetFloat("_FresnelIntensity", fresnelIntensity = fresnelIntensityMin);
+        } else {
+            meshRenderer.material.SetFloat("_FresnelIntensity", fresnelIntensity = fresnelIntensityMin);
+            meshRenderer = null;
         }
     }
 
@@ -98,41 +108,29 @@ public class Raycaster : MonoBehaviour
 
     void HandleInput(Controller controller, RaycastHit hit) {
         // LEFT HAND
-
         if (this.controller == Controller.Left) {
             //meshRenderer.material.SetFloat("_FresnelIntensity", fresnelIntensity = fresnelIntensityMax);
-            if (OVRInput.Get(OVRInput.RawButton.LIndexTrigger) && !pickUp) {
-                pickUp = true;
+            if (OVRInput.Get(OVRInput.RawButton.LIndexTrigger) || Input.GetKey(KeyCode.E)) {
                 meshRenderer.material.SetFloat("_FresnelPower", fresnelPower = fresnelPowerMax);
                 //hit.transform.gameObject.GetComponent<Renderer>().material = matHit;
                 if (hit.transform.gameObject.tag == "Track")
                     hit.transform.gameObject.name = "Grabbed Track";
                 hit.transform.parent = gameObject.transform;
-            } else if (!OVRInput.Get(OVRInput.RawButton.LIndexTrigger)) {
-                /*foreach(Transform child in transform) {
-                  if(child.tag == "Track") {
-                    child.transform.parent = null;
-                    //child.GetComponent<Renderer>().material = matNotHit;
-                    meshRenderer.material.SetFloat("_FresnelPower", fresnelPower = fresnelPowerMin);
-                  }
-                } */
+            } else if (!OVRInput.Get(OVRInput.RawButton.LIndexTrigger) && !Input.GetKey(KeyCode.E)) {
                 DeParent();
-                pickUp = false;
             }
         }
         // RIGHT HAND
         if (this.controller == Controller.Right) {
             //meshRenderer.material.SetFloat("_FresnelIntensity", fresnelIntensity = fresnelIntensityMax);
-            if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger) && !pickUp) {
-                pickUp = true;
+            if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger) || Input.GetKey(KeyCode.Space)) {
                 meshRenderer.material.SetFloat("_FresnelPower", fresnelPower = fresnelPowerMax);
                 //hit.transform.gameObject.GetComponent<Renderer>().material = matHit;
                 if (hit.transform.gameObject.tag == "Track")
                     hit.transform.gameObject.name = "Grabbed Track";
                 hit.transform.parent = gameObject.transform;
-            } else if (!OVRInput.Get(OVRInput.RawButton.RIndexTrigger)) {
+            } else if (!OVRInput.Get(OVRInput.RawButton.RIndexTrigger) && !Input.GetKey(KeyCode.Space)) {
                 DeParent();
-                pickUp = false;
             }
         }
     }
@@ -141,8 +139,10 @@ public class Raycaster : MonoBehaviour
         foreach (Transform child in transform) {
             if (child.tag == "Track") {
                 child.transform.parent = null;
-                //child.GetComponent<Renderer>().material = matNotHit;
-                meshRenderer.material.SetFloat("_FresnelPower", fresnelPower = fresnelPowerMin);
+               MeshRenderer childRenderer = child.GetComponent<MeshRenderer>();
+               childRenderer.material.SetFloat("_FresnelPower", fresnelPower = fresnelPowerMin);
+                Debug.Log(childRenderer.material.GetFloat("_FresnelIntensity"));
+
             }
         }
     }
@@ -176,12 +176,9 @@ public class Raycaster : MonoBehaviour
         }
     }
 
-    void FresnelHighlight(Controller controller, RaycastHit hit)
+    MeshRenderer GetMeshRenderer(RaycastHit hit)
     {
-        if (this.controller == Controller.Left || this.controller == Controller.Right)
-        {
-            meshRenderer.material.SetFloat("_FresnelIntensity", fresnelIntensity = fresnelIntensityMax);
-        }
+        return hit.transform.gameObject.GetComponent<MeshRenderer>();
     }
 }
 
