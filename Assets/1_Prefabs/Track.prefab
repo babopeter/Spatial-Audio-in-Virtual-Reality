@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 6262597333071531717}
   - component: {fileID: 6262597333071531718}
   - component: {fileID: 6262597333071531719}
+  - component: {fileID: 7574321998193616278}
+  - component: {fileID: 6903218500896156142}
+  - component: {fileID: 3251878646127921177}
   m_Layer: 8
   m_Name: Track
   m_TagString: Track
@@ -107,3 +110,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textPrefab: {fileID: 3983619345320495268, guid: b7b4a6134f231401caa3a7ef69b27f71,
     type: 3}
+--- !u!114 &7574321998193616278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6262597333071531736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab518479ea494d9fb81d85cad90963d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  azimuth: 0
+  elevation: 0
+  target: {fileID: 0}
+  dir: {x: 0, y: 0, z: 0}
+  camRot: 0
+  cam: {fileID: 0}
+  Source1: {fileID: 0}
+  Source2: {fileID: 6262597333071531736}
+  Distance_: 0
+--- !u!114 &6903218500896156142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6262597333071531736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e07c9bbdee94c618044e72c657d3d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _openOnAwake: 0
+  _udpBufferSize: 8192
+  _inspectorMessageEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: OscSimpl.OscMessageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _port: 8000
+  _mode: 0
+  _remoteIpAddress: 127.0.0.1
+  _remoteStatus: 2
+  _multicastLoopback: 1
+  _bundleMessagesOnEndOfFrame: 0
+  _splitBundlesAvoidingBufferOverflow: 1
+  _settingsFoldout: 0
+  _messagesFoldout: 0
+--- !u!114 &3251878646127921177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6262597333071531736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc5942b77a754eaaaf825d570a67bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oscOut: {fileID: 0}
+  xAngle: 0
+  yAngle: 0
+  MyDistance: 0
+  DistanceL: 0
+  DistanceR: 0
+  switchSounds: 0
+  lastSend: 0

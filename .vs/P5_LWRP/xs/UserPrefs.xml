@@ -1,12 +1,17 @@
 ﻿<Properties StartupConfiguration="{EB1C5A24-7993-446D-050D-BEB3E081CD11}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/5_Scripts/Raycaster.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/5_Scripts/ControllerManager.cs">
     <Files>
-      <File FileName="Assets/5_Scripts/Raycaster.cs" Line="66" Column="40" />
+      <File FileName="Assets/5_Scripts/Raycaster.cs" Line="79" Column="65" />
+      <File FileName="Assets/5_Scripts/Calculations.cs" />
+      <File FileName="Assets/5_Scripts/Send.cs" />
+      <File FileName="Assets/5_Scripts/GetIP.cs" />
+      <File FileName="Assets/Oculus/VR/Scripts/Util/OVRDebugInfo.cs" />
+      <File FileName="Assets/5_Scripts/ControllerManager.cs" Line="36" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0ea7fc60-0ae2-492a-b854-33583061854d" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ff4d6db4-3945-4863-a6a2-f8b438eca23c" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
