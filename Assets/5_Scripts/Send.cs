@@ -12,13 +12,14 @@ public class Send : MonoBehaviour
     public float DistanceR;
     public bool switchSounds;
     public float lastSend;
+    public int port;
 
     // Start is called before the first frame update
     void Start()
     {
 
         if (!oscOut) oscOut = gameObject.AddComponent<OscOut>();
-        oscOut.Open(8000, "192.168.43.72");
+        oscOut.Open(port, "172.20.10.7");
         oscOut.Send("OSC connection established");
         xAngle = gameObject.GetComponent<Calculations>().azimuth;
         yAngle = gameObject.GetComponent<Calculations>().elevation;
@@ -47,8 +48,8 @@ public class Send : MonoBehaviour
         oscOut.Send("angle: ", xAngle);
         oscOut.Send("y angle: ", yAngle);
         //  oscOut.Send("Distance", MyDistance);
-        oscOut.Send("Left", DistanceL);
-        oscOut.Send("Right", DistanceR);
+        oscOut.Send("Left: ", DistanceL);
+        oscOut.Send("Right: ", DistanceR);
         /*if (switchSounds && ((Time.time * 1000) - lastSend) > 4200)
         {
             oscOut.Send("Sound", switchSounds);

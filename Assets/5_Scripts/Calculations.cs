@@ -43,7 +43,7 @@ public class Calculations : MonoBehaviour
         var myPos = transform.position;
         Vector3 direction = (myPos - target.position).normalized;
         //	angle = ((Mathf.Atan2(toOther.z, toOther.x) * Mathf.Rad2Deg) + 270 + camRot) % 360;
-        azimuth = Mathf.Abs(((Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg) + 540 - camRot)) % 360;
+        azimuth = Mathf.Abs(((Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg) + 720 - camRot)) % 360;
         elevation = Mathf.Atan2(direction.y, Mathf.Sqrt(direction.x * direction.x + direction.z * direction.z)) * Mathf.Rad2Deg;
         // dir = Quaternion.Euler(azimuth, elevation, 0) * Vector3.forward;
         dir.x = azimuth;
