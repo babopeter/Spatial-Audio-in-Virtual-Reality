@@ -921,8 +921,6 @@ MonoBehaviour:
   switchSounds: 0
   lastSend: 0
   port: 8001
-  solo: 0
-  lastSolo: 0
 --- !u!114 &585528942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,7 +947,6 @@ MonoBehaviour:
   distanceOfSides: 0
   myObject: {fileID: 585528947}
   head: {fileID: 530724581}
-  solo: 0
 --- !u!4 &585528947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6262597333071531715, guid: 3bcb2b258a2254a8bbbe2481af90c5f8,
@@ -988,7 +985,6 @@ MonoBehaviour:
   distanceOfSides: 0
   myObject: {fileID: 1285761737}
   head: {fileID: 530724581}
-  solo: 0
 --- !u!114 &649911428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,8 +1006,6 @@ MonoBehaviour:
   switchSounds: 0
   lastSend: 0
   port: 8000
-  solo: 0
-  lastSolo: 0
 --- !u!1 &677187985 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3519200412036919777, guid: 41128d387d8d0445f9d1b33f7b9a3d94,
@@ -1181,9 +1175,6 @@ MonoBehaviour:
   matHit: {fileID: 2100000, guid: a9b0e55b8ab284794b1f42041712259d, type: 2}
   minDist: 1
   maxDist: 20
-  solo: 0
-  mainCol: {r: 0, g: 0.54957336, b: 1.7207954, a: 0}
-  soloCol: {r: 1.6905372, g: 0.11961346, b: 0.11961346, a: 0}
   controller: 0
   material: {fileID: 0}
   fresnelPower: 0
@@ -1591,9 +1582,6 @@ MonoBehaviour:
   matHit: {fileID: 2100000, guid: a9b0e55b8ab284794b1f42041712259d, type: 2}
   minDist: 1
   maxDist: 20
-  solo: 0
-  mainCol: {r: 0, g: 0.54957336, b: 1.7207954, a: 0}
-  soloCol: {r: 1.6905372, g: 0.11961346, b: 0.11961346, a: 0}
   controller: 1
   material: {fileID: 0}
   fresnelPower: 0
