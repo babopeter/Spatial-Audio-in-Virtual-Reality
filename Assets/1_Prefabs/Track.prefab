@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textPrefab: {fileID: 3983619345320495268, guid: b7b4a6134f231401caa3a7ef69b27f71,
     type: 3}
+  trackName: 
 --- !u!114 &7574321998193616278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +132,13 @@ MonoBehaviour:
   Source1: {fileID: 0}
   Source2: {fileID: 6262597333071531736}
   Distance_: 0
+  DistanceL: 0
+  DistanceR: 0
+  distanceOfSides: 0
+  myObject: {fileID: 0}
+  head: {fileID: 0}
+  solo: 0
+  soloRef: 0
 --- !u!114 &6903218500896156142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,3 +187,8 @@ MonoBehaviour:
   DistanceR: 0
   switchSounds: 0
   lastSend: 0
+  port: 0
+  solo: 0
+  lastSolo: 0
+  soloRef: 0
+  lastSoloRef: 0

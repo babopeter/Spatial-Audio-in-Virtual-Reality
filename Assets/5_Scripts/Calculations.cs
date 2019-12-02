@@ -27,6 +27,11 @@ public class Calculations : MonoBehaviour
     public Transform myObject;
     public Transform head;
 
+    //---------- SOLO -------------------------
+    //public bool solo = false;
+    //public bool soloRef = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
