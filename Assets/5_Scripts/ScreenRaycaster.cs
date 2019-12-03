@@ -92,8 +92,8 @@ public class ScreenRaycaster : MonoBehaviour
     }
 
     if(Input.GetKeyDown(KeyCode.Q)) {
-        //solo = !hit.transform.gameObject.GetComponent<Calculations>().solo;
-        //hit.transform.gameObject.GetComponent<Calculations>().solo = solo;
+        solo = !hit.transform.gameObject.GetComponent<Send>().solo;
+        hit.transform.gameObject.GetComponent<Send>().solo = solo;
       if(solo){
           meshRenderer.material.SetColor("_FresnelColor", soloFresnelCol);
           meshRenderer.material.SetColor("_BaseColor", soloCol);
