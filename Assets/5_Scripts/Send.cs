@@ -23,14 +23,16 @@ public class Send : MonoBehaviour
     {
 
         if (!oscOut) oscOut = gameObject.AddComponent<OscOut>();
-        oscOut.Open(port, "192.168.43.224");
+        oscOut.Open(port, "192.168.137.105");
         oscOut.Send("OSC connection established");
+        /*
         xAngle = gameObject.GetComponent<Calculations>().azimuth;
         yAngle = gameObject.GetComponent<Calculations>().elevation;
         MyDistance = gameObject.GetComponent<Calculations>().Distance_;
         DistanceL = gameObject.GetComponent<GetAngle>().DistanceL;
         DistanceR = gameObject.GetComponent<GetAngle>().DistanceR;
         //switchSounds = gameObject.GetComponent<SwitchSound>().buttonPressed;
+        */
         
         solo = lastSolo;
         soloRef = lastSoloRef;

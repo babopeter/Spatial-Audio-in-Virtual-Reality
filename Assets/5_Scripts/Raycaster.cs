@@ -63,7 +63,7 @@ public class Raycaster : MonoBehaviour
         line.SetPosition(1, endPos);
         
 
-        CheckSoloRefInput();
+        //CheckSoloRefInput();
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, forward, out hit, Mathf.Infinity, layermask)) {
@@ -90,7 +90,8 @@ public class Raycaster : MonoBehaviour
                 GameObject target = transform.Find("Grabbed Track").gameObject;
                 Vector3 targetPos = target.transform.position;
 
-                if(target.transform.position.x < 6 && target.transform.position.x > -6 && target.transform.position.z < 6 && target.transform.position.z > -6) {
+                if(target.transform.position.x < 7 && target.transform.position.x > -7 && 
+                target.transform.position.z < 7 && target.transform.position.z > -7) {
                     if(target.transform.position.y < minElev) {
                     DeParent();
                     target.transform.position = new Vector3(targetPos.x, minElev + 0.15f, targetPos.z);
@@ -249,7 +250,6 @@ public class Raycaster : MonoBehaviour
     void CheckSoloRefInput() {
         if(controller == Controller.Right) {
             if(OVRInput.GetDown(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.Y)) {
-                Debug.Log("TestRef");
               soloRef = !soloRef;
               //trackToggle = !trackToggle;
               //trackSelection(trackToggle);
