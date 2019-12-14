@@ -18,16 +18,22 @@ public class Send : MonoBehaviour
     public bool soloRef;
     public bool lastSoloRef;
 
+    public GameObject controllerManager;
+
+    public float totalSumOfDistance;
+
+    public float kickDistance, snareDistance, percDistance, bassDistance, melodyDistance, arpegDistance, choirDistance;
+
     // Start is called before the first frame update
     void Start()
     {
 
         if (!oscOut) oscOut = gameObject.AddComponent<OscOut>();
-        oscOut.Open(port, "192.168.137.105");
+        oscOut.Open(port, "192.168.43.59");
         oscOut.Send("OSC connection established");
         /*
         xAngle = gameObject.GetComponent<Calculations>().azimuth;
-        yAngle = gameObject.GetComponent<Calculations>().elevation;
+        yAngle = gameObject.GetComponentx<Calculations>().elevation;
         MyDistance = gameObject.GetComponent<Calculations>().Distance_;
         DistanceL = gameObject.GetComponent<GetAngle>().DistanceL;
         DistanceR = gameObject.GetComponent<GetAngle>().DistanceR;
@@ -70,7 +76,29 @@ public class Send : MonoBehaviour
         oscOut.Send("Left: ", DistanceL);
         oscOut.Send("Right: ", DistanceR);
 
-       
+        if(controllerManager.GetComponent<sumOfDistances>().retrieveSum == true) {
+            
+            totalSumOfDistance = getTotalSumOfDistance();
+            kickDistance = getKickDistance();
+            snareDistance = getSnareDistance();
+            percDistance = getPercDistance();
+            bassDistance = getBassDistance();
+            melodyDistance = getMelodyDistance();
+            arpegDistance = getArpegDistance();
+            choirDistance = getChoirDistance();
+
+            // Debug.Log("kick: " + kickDistance);
+            oscOut.Send("Total Sum: ", totalSumOfDistance);
+            oscOut.Send("Kick: ", kickDistance);
+            oscOut.Send("Snare: ", snareDistance);
+            oscOut.Send("Perc: ", percDistance);
+            oscOut.Send("Bass: ", bassDistance);
+            oscOut.Send("Melody: ", melodyDistance);
+            oscOut.Send("Arpeg: ", arpegDistance);
+            oscOut.Send("Choir: ", choirDistance);
+
+            
+        }
         /*if (switchSounds && ((Time.time * 1000) - lastSend) > 4200)
         {
             oscOut.Send("Sound", switchSounds);
@@ -142,5 +170,45 @@ public class Send : MonoBehaviour
          bool getSoloRef = Raycaster.soloRef;
          return getSoloRef;
      }
+
+    float getTotalSumOfDistance() {
+         float totalSum = controllerManager.GetComponent<sumOfDistances>().sum;
+         return totalSum;
+     }
+
+     float getKickDistance() {
+         float kickSum = controllerManager.GetComponent<sumOfDistances>().kick;
+         return kickSum;
+     }
+
+    float getSnareDistance() {
+         float snareSum = controllerManager.GetComponent<sumOfDistances>().snare;
+         return snareSum;
+     }
+
+    float getPercDistance() {
+         float percSum = controllerManager.GetComponent<sumOfDistances>().perc;
+         return percSum;
+     }
+
+    float getBassDistance() {
+         float bassSum = controllerManager.GetComponent<sumOfDistances>().bass;
+         return bassSum;
+     }
+
+    float getMelodyDistance() {
+        float melodySum = controllerManager.GetComponent<sumOfDistances>().melody;
+        return melodySum;
+    }
+
+    float getArpegDistance() {
+        float arpegSum = controllerManager.GetComponent<sumOfDistances>().arpeg;
+        return arpegSum;
+    }
+
+    float getChoirDistance() {
+        float choirSum = controllerManager.GetComponent<sumOfDistances>().choir;
+        return choirSum;
+    }
 
 }
